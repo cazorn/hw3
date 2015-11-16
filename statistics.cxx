@@ -7,7 +7,7 @@ using namespace std;
 
 
 double random(double* pointer, const int N);							//put random variables in to a given array
-double statistic(double& sum, double* point, const int N, double& mean, double& var);		//calulate the expectation value and Variance of a given array 
+double statistic(double* point, const int N, double& mean, double& var);		//calulate the expectation value and Variance of a given array 
 
 
 
@@ -15,11 +15,11 @@ int main(){
    srand(time(NULL));						//create new seed for rand()
    const int N = 100;						//lenght of vector p, contains random var between 0 and 1
    double p[N];
-   double mean, var, sum;
+   double mean, var;
 
    random(p,N);
 
-   statistic(sum,p,N,mean,var);
+   statistic(p,N,mean,var);
    
    cout << "Mean = " << mean << endl;
    cout << "Variance = " << var << endl;
@@ -52,8 +52,8 @@ double random(double* pointer, const int N){
 }
 
 
-double statistic(double& sum, double* point, const int N, double& mean, double& var){
-  sum=0;
+double statistic(double* point, const int N, double& mean, double& var){
+  double sum=0;
   for(int i=0; i<N;i++)						//calculate mean value
   {
     sum += point[i];						//sum of all x_i
